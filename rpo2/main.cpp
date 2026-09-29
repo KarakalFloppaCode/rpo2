@@ -9,12 +9,37 @@ int main()
 
 	
 	
-	int a;
-	std::cout << "1359230-590235";
-	
+	const int size = 10;
+	int arr[size];
+	int count = 0;
 
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 6;
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n\n";
 
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] != 0) 
+		{
+			arr[count] = arr[i];
+			count++;
+		}
+	}
 
+	std::cout << "\n\n";
+
+	for (int i = count; i < size; i++)
+	{
+		arr[i] = -1;
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
 
 
 	return 0;
