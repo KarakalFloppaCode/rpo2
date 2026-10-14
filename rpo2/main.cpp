@@ -1,15 +1,89 @@
 #include <iostream>
 #include <Windows.h>
 
+void F00(int *num)
+{
+	*num += 3;
+}
+
+void MySwap(int &one, int &two)
+{
+	int ptr = one;
+	one = two;
+	two = ptr;
+}
+
+void FillArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		*(arr + i) = rand() % 10;
+	}
+}
+
+
 int main()
 {
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
 	srand(time(NULL));
 
+
+
+	const int size = 5;
+	int arr[size];
 	
-	
-	const int size = 10;
+	FillArray(arr, size);
+
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << *(arr + i) << " ";
+	}
+
+
+	int* ptr = new int;
+
+	*ptr = 10;
+
+	delete ptr;
+
+
+
+	return 0;
+}
+
+
+	/*
+	int a = 6;
+
+	std::cout << a << "\n";
+	F00(&a);
+	std::cout << a << "\n";
+	*/
+
+	/*
+		int a = 5;
+
+
+		int* ptr = &a;
+
+		std::cout << *ptr << "\n\n";
+		std::cout << &a << "\n\n";
+	*/
+
+	/*
+		int one = 5, two = 10;
+		std::cout << one << " " << two << "\n";
+		MySwap(one, two);
+		std::cout << one << " " << two << "\n";
+	*/
+
+
+
+
+
+/*
+const int size = 10;
 	int arr[size];
 	int count = 0;
 
@@ -22,7 +96,7 @@ int main()
 
 	for (int i = 0; i < size; i++)
 	{
-		if (arr[i] != 0) 
+		if (arr[i] != 0)
 		{
 			arr[count] = arr[i];
 			count++;
@@ -41,9 +115,8 @@ int main()
 		std::cout << arr[i] << " ";
 	}
 
+*/
 
-	return 0;
-}
 
 /*
 	const int row = 4;
