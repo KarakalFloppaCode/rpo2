@@ -1,24 +1,76 @@
 #include <iostream>
 #include <Windows.h>
 
-void F00(int *num)
+/*
+void Myswap(int &num1, int &num2) 
 {
-	*num += 3;
+	int ptr = num2;
+	num2 = num1;
+	num1 = ptr;
 }
 
-void MySwap(int &one, int &two)
-{
-	int ptr = one;
-	one = two;
-	two = ptr;
-}
 
-void FillArray(int* arr, int size)
+void FillArr(int arr[], const int size)
 {
 	for (int i = 0; i < size; i++)
 	{
 		*(arr + i) = rand() % 10;
 	}
+}
+
+void vivodarr(int arr[], const int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << *(arr + i) << " ";
+	}
+}
+
+*/
+
+
+void ArrPlusPlus(int*& arr, int& size)
+{
+	size++;
+	int* temp = new int[size] {};
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[size - 1] = 100;
+
+	std::swap(arr, temp);
+
+	delete[] temp;
+}
+
+void RasprPamat(int*&ptr, int size)
+{
+	ptr = new int[size];
+}
+
+void ArrPamat(int*& ptr, int size)
+{
+
+	for (int i = 0; i < size; i++)
+	{
+		*(ptr + i) = rand() % 10;
+	
+	}
+}
+
+void Arrpechat(int*& ptr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << *(ptr + i) << " ";
+	}
+}
+
+void DeleteArr(int *ptr)
+{
+	delete[] ptr;
+	ptr = nullptr;
 }
 
 
@@ -28,11 +80,141 @@ int main()
 	SetConsoleOutputCP(CP_UTF8);
 	srand(time(NULL));
 
+	int* ptr = nullptr;
+	int size = 5;
+	RasprPamat(ptr, size);
+	ArrPamat(ptr, size);
+	Arrpechat(ptr, size);
+	DeleteArr(ptr);
 
 
+	return 0;
+}
+
+
+/*
+int size = 5;
+
+int* arr = new int[size] {1, 2, 3, 4, 5};
+
+for (int i = 0; i < size; i++)
+{
+	std::cout << arr[i] << " ";
+}
+
+std::cout << "\n";
+
+ArrPlusPlus(arr, size);
+
+
+for (int i = 0; i < size; i++)
+{
+	std::cout << *(arr + i) << " ";
+}
+
+
+
+delete[] arr;
+*/
+
+
+/*
+int side = 2, row = 4, col1 = 4, col2 = 3, col3 = 0;
+
+int*** ar = new int** [side];
+for (int i = 0; i < side; i++)
+{
+	ar[i] = new int* [row];
+
+}
+
+for (int i = 0; i < row; i++)
+{
+	ar[0][i] = new int[col1];
+}
+
+ar[1][0] = new int[2];
+for (int i = 1; i < row; i++)
+{
+	ar[1][i] = new int[col2];
+}
+
+ar[1][2][1] = 10;
+
+
+
+for (int i = 0; i < side; i++)
+{
+	for (int j = 0; j < row; j++)
+	{
+		delete[] ar[i][j];
+	}
+	delete[] ar[i];
+}
+delete[] ar;
+*/
+
+
+/*
+	int** arr = new int* [row];
+
+	for (int i = 0; i < row; i++)
+	{
+		std::cin >> col;
+		arr[i] = new int[col];
+	}
+
+	arr[1][2] = 10;
+
+	for (int i = 0; i < row; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;*/
+
+
+/*
+	int a = 5, b= 10;
+
+	std::cout << a << " " << b << "\n";
+
+	Myswap(a, b);
+
+	std::cout << a << " " << b << "\n";
+
+	const int size = 10;
+	int arr[size];
+
+	FillArr(arr, size);
+
+	vivodarr(arr, size);
+
+
+	int &ptr = a;
+
+	ptr++;
+
+	std::cout << "\n" << a;
+	*/
+
+
+	/*	int size = 0;
+
+		std::cin >> size;
+
+
+		int* name = new int[size] {};
+
+		name[1] = 10;
+
+		delete[] name;
+	*/
+
+
+/*
 	const int size = 5;
 	int arr[size];
-	
+
 	FillArray(arr, size);
 
 	for (int i = 0; i < size; i++)
@@ -41,17 +223,15 @@ int main()
 	}
 
 
+
+
 	int* ptr = new int;
 
 	*ptr = 10;
 
 	delete ptr;
 
-
-
-	return 0;
-}
-
+*/
 
 	/*
 	int a = 6;
