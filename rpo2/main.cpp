@@ -1,5 +1,9 @@
+#define NOMINMAX
 #include <iostream>
 #include <Windows.h>
+#include <string>
+#include <limits>
+
 
 /*
 void Myswap(int &num1, int &num2) 
@@ -29,6 +33,145 @@ void vivodarr(int arr[], const int size)
 */
 
 
+
+int main()
+{
+	
+	SetConsoleCP(CP_UTF8);
+	SetConsoleOutputCP(CP_UTF8); // 1251 CP_UTF8 65001
+	srand(time(NULL));
+
+/*	
+
+	std::string name = "Text мессы";
+	std::string name1 = "Lol " + name;
+
+	std::string* ptr = &name;//new std::string[5]
+
+	std::string arr[3]{ "tea", "bread", "Ivan" };
+
+
+	// auto a = std::find(arr->begin(), arr->end(), "Ivan");
+
+	
+	size_t size = name.size();
+
+	std::cout << name<< "\n\n";
+
+	for (int i = 0; i < name.size(); i++)
+	{
+		if (name[i] == 't')
+		{
+			std::cout << i << " \n";
+		}
+		std:: cout << name[i];
+	}
+
+*/
+
+	std::string login;
+	std::string password;
+	std::string arr[2]{ " ", " "};
+	int proverkachislo = 0;
+
+	while (true)
+	{
+		system("cls");
+		std::cout << "\n\n\t\tЛогин и пароль\n\n";
+		std::cout << "Введите логин: ";
+		std::getline(std::cin, login);  //(откуда_взять_инфу, куда_положить)
+		size_t sizel = login.size();
+		if (sizel < 5 || sizel > 15)
+		{
+			std::cout << "Логин не может быть меньше 5 или больше 15 символов\n";
+			Sleep(1500);
+			continue;
+		}
+		arr[0] = login;
+		std::cout << "Введите пароль: ";
+
+		std::getline(std::cin, password);
+		size_t sizep = password.size();
+		for (int i = 0; i < sizep; i++)
+		{
+			if (password[i] == '1' || password[i] == '2' || password[i] == '3' || password[i] == '4' || password[i] == '5' || password[i] == '6' || password[i] == '7' || password[i] == '8' || password[i] == '9' || password[i] == '0')
+			{
+				proverkachislo++;
+			}
+		}
+		if (proverkachislo < 2)
+		{
+			std::cout << "Пароль должен содержать минимум 2 циферки";
+			Sleep(1500);
+			continue;
+		}
+		if (sizep < 5 || sizep > 15)
+		{
+			std::cout << "Пароль не может быть меньше 5 или больше 15 символов\n";
+			Sleep(1500);
+			continue;
+		}
+		arr[1] = password;
+		break;
+	}
+	
+	
+
+	std::string loginp;
+	std::string passwordp;
+	while (true)
+	{
+		system("cls");
+		std::cout << "\n\n\t\tАвторизация\n\n";
+		std::cout << "Введите логин: ";
+		std::getline(std::cin, loginp);
+
+		std::cout << "Введите Пароль: ";
+		std::getline(std::cin, passwordp);
+
+		if (loginp == login && passwordp == password)
+		{
+			system("cls");
+			std::cout << "\n\n\t\tАвторизация успешна\n\n";
+			break;
+		}
+		else
+		{
+
+			std::cout << "\nНеверный логин или пароль\n\n";
+			Sleep(1500);
+		}
+	}
+	
+
+
+
+	
+
+
+/*
+	std::cin >> b;
+	std::cout << b << std::endl;
+
+	//std::cin.ignore(32767, '\n');
+	
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //топовая очистка буфера*/
+
+
+
+	// std::getline(std::cin, a, '\n');  //(откуда_взять_инфу, куда_положить, до_какого_символа_читать)
+
+
+
+
+
+
+
+	return 0;
+}
+
+/*
+
 void ArrPlusPlus(int*& arr, int& size)
 {
 	size++;
@@ -44,7 +187,7 @@ void ArrPlusPlus(int*& arr, int& size)
 	delete[] temp;
 }
 
-void RasprPamat(int*&ptr, int size)
+void RasprPamat(int*& ptr, int size)
 {
 	ptr = new int[size];
 }
@@ -55,7 +198,7 @@ void ArrPamat(int*& ptr, int size)
 	for (int i = 0; i < size; i++)
 	{
 		*(ptr + i) = rand() % 10;
-	
+
 	}
 }
 
@@ -67,29 +210,24 @@ void Arrpechat(int*& ptr, int size)
 	}
 }
 
-void DeleteArr(int *ptr)
+void DeleteArr(int* ptr)
 {
 	delete[] ptr;
 	ptr = nullptr;
 }
+*/
 
 
-int main()
-{
-	SetConsoleCP(CP_UTF8);
-	SetConsoleOutputCP(CP_UTF8);
-	srand(time(NULL));
+/*
 
-	int* ptr = nullptr;
-	int size = 5;
-	RasprPamat(ptr, size);
-	ArrPamat(ptr, size);
-	Arrpechat(ptr, size);
-	DeleteArr(ptr);
+int* ptr = nullptr;
+int size = 5;
+RasprPamat(ptr, size);
+ArrPamat(ptr, size);
+Arrpechat(ptr, size);
+DeleteArr(ptr);
+*/
 
-
-	return 0;
-}
 
 
 /*
