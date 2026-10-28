@@ -33,6 +33,122 @@ void vivodarr(int arr[], const int size)
 */
 
 
+void ArrPlusPlus(int*& arr, int& size)
+{
+	size++;
+	int* temp = new int[size] {};
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[size - 1] = 100;
+
+	std::swap(arr, temp);
+
+	delete[] temp;
+}
+
+void Arr3xPLUS(int*& arr, int& size)
+{
+	
+	size--;
+	int* temp = new int[size] {};
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	delete[] arr;
+	arr = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = temp[i];
+	}
+	delete[] temp;
+}
+
+void ArrMinusI(int*& arr, int& size, int index)
+{
+	size--;
+	int* temp = new int [size] {};
+	for (int i = 0; i < size; i++)
+	{
+		if (i < index)
+		{
+			temp[i] = arr[i];
+		}
+		else
+		{
+			temp[i] = arr[i + 1];
+		}
+	}
+	
+	delete[] arr;
+	arr = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = temp[i];
+	}
+	delete[] temp;
+}
+
+void ArrPlusI(int*& arr, int& size, int index)
+{
+	size++;
+	int* temp = new int [size] {};
+	for (int i = 0; i < size; i++)
+	{
+		if (i < index)
+		{
+			temp[i] = arr[i];
+		}
+		else if (i == index)
+		{
+			temp[i] = 100;
+		}
+		else
+		{
+			temp[i] = arr[i - 1];
+		}
+	}
+	delete[] arr;
+	arr = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = temp[i];
+	}
+	delete[] temp;
+}
+
+void RasprPamat(int*& ptr, int size)
+{
+	ptr = new int[size];
+}
+
+void ArrPamat(int*& ptr, int size)
+{
+
+	for (int i = 0; i < size; i++)
+	{
+		*(ptr + i) = rand() % 10;
+
+	}
+}
+
+void Arrpechat(int*& ptr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << *(ptr + i) << " ";
+	}
+	std::cout << "\n\n";
+}
+
+void DeleteArr(int* ptr)
+{
+	delete[] ptr;
+	ptr = nullptr;
+}
+
 
 int main()
 {
@@ -41,7 +157,40 @@ int main()
 	SetConsoleOutputCP(CP_UTF8); // 1251 CP_UTF8 65001
 	srand(time(NULL));
 
-/*	
+
+	
+
+	int* ptr = nullptr;
+	int size = 5;
+
+	std::cout << "Выделение, заполнение, печать:\n";
+	RasprPamat(ptr, size);
+	ArrPamat(ptr, size);
+	Arrpechat(ptr, size);
+	std::cout << "\nДобавление элемента в конец списка:\n";
+	ArrPlusPlus(ptr, size);
+	Arrpechat(ptr, size);
+	std::cout << "\nУдаление элемента по указанному индексу 1:\n";
+	ArrMinusI(ptr, size, 1);
+	Arrpechat(ptr, size);
+	std::cout << "\nВставка элемента по указанному индексу 3:\n";
+	ArrPlusI(ptr, size, 3);
+	Arrpechat(ptr, size);
+		
+	std::cout << "\nУдаление\n\n";
+	DeleteArr(ptr);
+
+
+
+
+
+	
+	
+
+	return 0;
+}
+
+/*
 
 	std::string name = "Text мессы";
 	std::string name1 = "Lol " + name;
@@ -53,7 +202,7 @@ int main()
 
 	// auto a = std::find(arr->begin(), arr->end(), "Ivan");
 
-	
+
 	size_t size = name.size();
 
 	std::cout << name<< "\n\n";
@@ -69,84 +218,7 @@ int main()
 
 */
 
-	std::string login;
-	std::string password;
-	std::string arr[2]{ " ", " "};
-	int proverkachislo = 0;
 
-	while (true)
-	{
-		system("cls");
-		std::cout << "\n\n\t\tЛогин и пароль\n\n";
-		std::cout << "Введите логин: ";
-		std::getline(std::cin, login);  //(откуда_взять_инфу, куда_положить)
-		size_t sizel = login.size();
-		if (sizel < 5 || sizel > 15)
-		{
-			std::cout << "Логин не может быть меньше 5 или больше 15 символов\n";
-			Sleep(1500);
-			continue;
-		}
-		arr[0] = login;
-		std::cout << "Введите пароль: ";
-
-		std::getline(std::cin, password);
-		size_t sizep = password.size();
-		for (int i = 0; i < sizep; i++)
-		{
-			if (password[i] == '1' || password[i] == '2' || password[i] == '3' || password[i] == '4' || password[i] == '5' || password[i] == '6' || password[i] == '7' || password[i] == '8' || password[i] == '9' || password[i] == '0')
-			{
-				proverkachislo++;
-			}
-		}
-		if (proverkachislo < 2)
-		{
-			std::cout << "Пароль должен содержать минимум 2 циферки";
-			Sleep(1500);
-			continue;
-		}
-		if (sizep < 5 || sizep > 15)
-		{
-			std::cout << "Пароль не может быть меньше 5 или больше 15 символов\n";
-			Sleep(1500);
-			continue;
-		}
-		arr[1] = password;
-		break;
-	}
-	
-	
-
-	std::string loginp;
-	std::string passwordp;
-	while (true)
-	{
-		system("cls");
-		std::cout << "\n\n\t\tАвторизация\n\n";
-		std::cout << "Введите логин: ";
-		std::getline(std::cin, loginp);
-
-		std::cout << "Введите Пароль: ";
-		std::getline(std::cin, passwordp);
-
-		if (loginp == login && passwordp == password)
-		{
-			system("cls");
-			std::cout << "\n\n\t\tАвторизация успешна\n\n";
-			break;
-		}
-		else
-		{
-
-			std::cout << "\nНеверный логин или пароль\n\n";
-			Sleep(1500);
-		}
-	}
-	
-
-
-
-	
 
 
 /*
@@ -154,21 +226,12 @@ int main()
 	std::cout << b << std::endl;
 
 	//std::cin.ignore(32767, '\n');
-	
+
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //топовая очистка буфера*/
 
 
 
 	// std::getline(std::cin, a, '\n');  //(откуда_взять_инфу, куда_положить, до_какого_символа_читать)
-
-
-
-
-
-
-
-	return 0;
-}
 
 /*
 
